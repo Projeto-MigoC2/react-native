@@ -1,16 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Page1 from "./src/pages/Home";
-import Page2 from "./src/pages/Search";
-import Page3 from "./src/pages/ContentList";
 import Routes from "./src/routes";
+import { ApplicationProvider } from "@ui-kitten/components";
+import * as eva from "@eva-design/eva";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { NativeBaseProvider } from "native-base";
 
-const Tab = createBottomTabNavigator();
+const queryClient = new QueryClient();
 
 export default function App() {
-  return <Routes />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <NativeBaseProvider>
+        <Routes />
+      </NativeBaseProvider>
+    </QueryClientProvider>
+  );
 }
 
 // const styles = StyleSheet.create({

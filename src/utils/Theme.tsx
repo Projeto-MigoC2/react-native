@@ -10,6 +10,7 @@ const theme = {
     lightFontColor: "#000000",
     darkBoxColor: "#132B4B",
     lightBoxColor: "#FFFFFF",
+    placeholderColor: "#8C8C8C",
   },
 };
 
