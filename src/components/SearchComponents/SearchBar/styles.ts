@@ -10,20 +10,24 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+  margin : 5px;
+  margin-top: 10px;
 `;
 
 export const SearchInput = styled(Input)`
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
 `;
 
-
+export const SearchIcon = styled(MaterialIcons)`
+    margin-left: 10px;  
+  `;
 
 export const IconContainer = styled.View`
   background-color: ${theme.colors.primaryColor};
   border-radius: 20px;
   padding: 5px;
+  margin-right: 10px;
 
 `;
 
