@@ -1,6 +1,11 @@
 import theme from "../../../utils/Theme";
-import { ChevronRight, Container, IconContainer, SearchInput } from "./styles";
-import { MaterialIcons } from "@expo/vector-icons";
+import {
+  ChevronRight,
+  Container,
+  IconContainer,
+  SearchIcon,
+  SearchInput,
+} from "./styles";
 import { useState } from "react";
 
 interface IsearchBarProps {
@@ -12,10 +17,13 @@ export default function SearchBar({ searchFunction }: IsearchBarProps) {
   return (
     <Container>
       <SearchInput
+        size="md"
+        borderRadius={10}
+        backgroundColor={theme.colors.lightBoxColor}
         placeholder="Buscar conteúdo"
         placeholderTextColor={theme.colors.placeholderColor}
         InputLeftElement={
-          <MaterialIcons
+          <SearchIcon
             name="search"
             size={25}
             color={theme.colors.lightFontColor}
@@ -23,6 +31,7 @@ export default function SearchBar({ searchFunction }: IsearchBarProps) {
         }
         value={value}
         onChangeText={(text) => setValue(text)}
+        onSubmitEditing={() => searchFunction(value)}
         InputRightElement={
           <IconContainer>
             <ChevronRight
