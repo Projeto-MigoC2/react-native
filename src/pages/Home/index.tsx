@@ -7,8 +7,6 @@ import {
   Container,
   Description,
   DescriptionContainer,
-  Header,
-  HeaderText,
   Image,
   ImageContainer,
   TitleContainer,
@@ -22,19 +20,11 @@ import {
   FooterImage1,
   FooterImage2,
 } from "./styles";
+import Header from "../../components/global/Header";
 export default function Home() {
   return (
     <Container contentContainerStyle={{ alignItems: "center" }}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: theme.colors.primaryColor,
-          width: "100%",
-        }}
-      />
-      <Header>
-        <HeaderText>Início</HeaderText>
-      </Header>
+      <Header title="Início" />
 
       <ImageContainer>
         <Image source={require("../../assets/migo_happy.png")} />

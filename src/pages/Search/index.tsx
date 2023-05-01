@@ -8,22 +8,21 @@ import Conteudo from "../../types/conteudo";
 import theme from "../../utils/Theme";
 import {
   Container,
-  Header,
-  HeaderText,
   SearchContainer,
   SearchList,
   SearchListItem,
   SearchListItemTitle,
 } from "./styles";
+import Header from "../../components/global/Header";
 
 export default function Search() {
   const [searchText, setSearchText] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Conteudo[]>([]);
 
-  async function fetchResults(text: string) {
+  async function fetchResults(text: string): Promise<Conteudo[]> {
     const formattedText = encodeURIComponent(text);
     const response = await api.get(`conteudos/pesquisa?texto=${formattedText}`);
-    return response;
+    return response.data;
   }
 
   const { data, error, fetchStatus, isLoading } = useQuery({
@@ -37,22 +36,17 @@ export default function Search() {
   }
 
   useEffect(() => {
-    setResults(data?.data);
+    if (data) {
+      setResults(data);
+    }
     // console.log("carregando:" + isLoading);
   }, [data]);
 
+  const reqError = error as Error;
+
   return (
     <Container contentContainerStyle={{ alignItems: "center" }}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: theme.colors.primaryColor,
-          width: "100%",
-        }}
-      />
-      <Header>
-        <HeaderText>Pesquisar</HeaderText>
-      </Header>
+      <Header title="Pesquisar" />
 
       <SearchContainer>
         <>
@@ -67,7 +61,7 @@ export default function Search() {
               ))}
             </SearchList>
           )}
-          {error && <Text>Error: {error.message}</Text>}
+          {reqError && <Text>Error: {reqError.message}</Text>}
           {results && (
             <SearchList>
               {results.map((result: Conteudo) => (
