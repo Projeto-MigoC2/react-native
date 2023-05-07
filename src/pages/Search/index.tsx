@@ -55,7 +55,7 @@ export default function Search() {
           {fetchStatus != "idle" && isLoading && (
             <SearchList>
               {[1, 2, 3, 4, 5].map((item) => (
-                <SearchListItem key={item}>
+                <SearchListItem shadow={4} key={item}>
                   <Skeleton height={10} />
                 </SearchListItem>
               ))}
@@ -65,7 +65,7 @@ export default function Search() {
           {results && (
             <SearchList>
               {results.map((result: Conteudo) => (
-                <SearchListItem key={result.id}>
+                <SearchListItem shadow={4} key={result.id}>
                   <SearchListItemTitle>{result.nome}</SearchListItemTitle>
                 </SearchListItem>
               ))}

@@ -50,7 +50,7 @@ export default function HomeListItem({
 
   return (
     <Container>
-      <ListItem>
+      <ListItem shadow={4}>
         {renderIcon()}
         <ListItemText>{title}</ListItemText>
       </ListItem>

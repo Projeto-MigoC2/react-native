@@ -17,6 +17,7 @@ export default function SearchBar({ searchFunction }: IsearchBarProps) {
   return (
     <Container>
       <SearchInput
+        shadow={4}
         size="md"
         borderRadius={10}
         backgroundColor={theme.colors.lightBoxColor}

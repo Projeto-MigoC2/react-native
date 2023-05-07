@@ -6,6 +6,8 @@ import Search from "../pages/Search";
 import ModuleList from "../pages/ModuleList";
 import { MaterialCommunityIcons, Feather } from "@expo/vector-icons";
 import Content from "../pages/Content";
+import SettingsPage from "../pages/SettingsPage";
+import About from "../pages/About";
 
 const Tab = createBottomTabNavigator();
 const stack = createNativeStackNavigator();
@@ -49,6 +51,15 @@ function TabRoutes() {
         name="ContentList"
         component={ModuleList}
       />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="settings" color={color} size={size} />
+          ),
+        }}
+        name="settings"
+        component={SettingsPage}
+      />
     </Tab.Navigator>
   );
 }
@@ -63,6 +74,7 @@ function StackRoutes() {
     >
       <stack.Screen name="tabRoutes" component={TabRoutes} />
       <stack.Screen name="Content" component={Content} />
+      <stack.Screen name="About" component={About} />
     </stack.Navigator>
   );
 }

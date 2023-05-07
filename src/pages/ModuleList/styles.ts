@@ -10,6 +10,15 @@ export const Container = styled.ScrollView`
 export const ListContainer = styled(VStack) `
   flex: 1;
   width: 98%;
-  padding: 0px 10px 10px 10px;
+  padding: 20px 10px 10px 10px;
   background-color: ${theme.colors.lightBackgroundColor};
+`;
+
+export const ModuleLoadingBox = styled(Box)`
+  /* margin: 10px; */
+  margin: 0 10px 0 10px;
+  padding: 15px 0px 15px 0px;
+  background-color: ${theme.colors.lightBoxColor};
+  border-radius: 10px;
+  width: 100%;
 `;

@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import theme from "../../utils/Theme";
+import { Box } from "native-base";
 
 
 export const Container = styled.TouchableOpacity`
@@ -8,7 +9,7 @@ width: 100%;
 
 
 
-export const ListItem = styled.View`
+export const ListItem = styled(Box)`
   border-radius: 10px;
   background: #ffffff;
   /* box-shadow:  5px 5px 7px #87898c, -5px -5px 7px #ffffff; */

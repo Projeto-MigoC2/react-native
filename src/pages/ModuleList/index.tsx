@@ -1,4 +1,4 @@
-import { Container, ListContainer } from "./styles";
+import { Container, ListContainer, ModuleLoadingBox } from "./styles";
 import Header from "../../components/global/Header";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../services/api";
@@ -11,7 +11,7 @@ export default function ModuleList() {
   const [modulos, setModulos] = useState<Modulo[]>([]);
 
   async function fetchModulos(): Promise<Modulo[]> {
-    console.log("fetching modulos");
+    // console.log("fetching modulos");
     const response = await api.get("modulos");
     return response.data;
   }
@@ -39,26 +39,27 @@ export default function ModuleList() {
   }, [data]);
 
   return (
-    <Container>
+    <>
       <Header title="Módulos" />
-
-      {isLoading && (
-        <ListContainer space={4} alignItems="center">
-          <Box>
-            {[1, 2, 3, 4, 5].map((item) => (
-              <Skeleton key={item} height={10} />
+      <Container>
+        {isLoading && (
+          <ListContainer space={4} alignItems="center">
+            {[0, 1, 2, 3, 4, 5].map((item) => (
+              <ModuleLoadingBox key={item}>
+                <Skeleton height={5} />
+              </ModuleLoadingBox>
             ))}
-          </Box>
-        </ListContainer>
-      )}
+          </ListContainer>
+        )}
 
-      {modulos && (
-        <ListContainer space={4} alignItems="center">
-          {modulos.map((modulo) => (
-            <ModuleItem modulo={modulo} key={modulo.id} />
-          ))}
-        </ListContainer>
-      )}
-    </Container>
+        {modulos && (
+          <ListContainer space={4} alignItems="center">
+            {modulos.map((modulo) => (
+              <ModuleItem modulo={modulo} key={modulo.id} />
+            ))}
+          </ListContainer>
+        )}
+      </Container>
+    </>
   );
 }

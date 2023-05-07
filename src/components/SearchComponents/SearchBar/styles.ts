@@ -1,12 +1,12 @@
 import styled from "styled-components/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import theme from "../../../utils/Theme";
-import { Input } from "native-base";
+import { Box, Input } from "native-base";
 
 
 
 
-export const Container = styled.View`
+export const Container = styled(Box)`
   flex: 1;
   align-items: center;
   justify-content: center;

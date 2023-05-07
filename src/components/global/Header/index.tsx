@@ -7,7 +7,6 @@ export default function Header({ title }: { title: string }) {
     <>
       <SafeAreaView
         style={{
-          flex: 1,
           backgroundColor: theme.colors.primaryColor,
           width: "100%",
         }}

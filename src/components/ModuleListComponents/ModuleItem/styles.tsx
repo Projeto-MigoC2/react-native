@@ -4,7 +4,8 @@ import theme from "../../../utils/Theme";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export const ModuleContainer = styled(Box)`
-  margin: 10px;
+  /* margin: 10px; */
+  margin: 0 10px 0 10px;
   padding: 10px;
   background-color: ${theme.colors.lightBoxColor};
   border-radius: 10px;
@@ -16,8 +17,6 @@ export const ModuleHeader = styled(Box)`
   justify-content: center;
   align-items: center;
 `;
-
-// module name must be centralized with the expand icon on the left corner
 
 export const ModuleName = styled(Text)`
   color: ${theme.colors.secondaryColor};
