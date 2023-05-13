@@ -15,7 +15,7 @@ export default function SettingsPage() {
 
   return (
     <>
-      <Header title="Configurações" />
+      <Header title="Ajustes" />
 
       <Container>
         <ListContainer space={4} alignItems="center">

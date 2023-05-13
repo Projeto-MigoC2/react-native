@@ -9,57 +9,61 @@ import Content from "../pages/Content";
 import SettingsPage from "../pages/SettingsPage";
 import About from "../pages/About";
 
-const Tab = createBottomTabNavigator();
+import {
+  AnimatedTabBarNavigator,
+  DotSize, // optional
+  TabElementDisplayOptions, // optional
+  TabButtonLayout, // optional
+  IAppearanceOptions, // optional
+} from "react-native-animated-nav-tab-bar";
+import theme from "../utils/Theme";
+
+const Tab = AnimatedTabBarNavigator();
+
+// const Tab = createBottomTabNavigator();
 const stack = createNativeStackNavigator();
 
+interface PageIcons {
+  [key: string]: "home" | "search" | "book" | "settings";
+}
+
 function TabRoutes() {
+  const pagesIcons: PageIcons = {
+    Início: "home",
+    Pesquisar: "search",
+    Módulos: "book",
+    Ajustes: "settings",
+  };
+
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-      initialRouteName="Home"
-    >
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="home" color={color} size={size} />
-          ),
-        }}
-        name="Home"
-        component={Home}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="search" color={color} size={size} />
-          ),
-        }}
-        name="search"
-        component={Search}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="bookshelf"
-              color={color}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          const iconName = pagesIcons[route.name];
+          return (
+            <Feather
+              name={iconName}
               size={size}
+              color={focused ? theme.colors.secondaryColor : color}
             />
-          ),
-        }}
-        name="ContentList"
-        component={ModuleList}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" color={color} size={size} />
-          ),
-        }}
-        name="settings"
-        component={SettingsPage}
-      />
+          );
+        },
+        headerShown: false,
+      })}
+      initialRouteName="Início"
+      tabBarOptions={{
+        activeTintColor: theme.colors.darkFontColor,
+        activeBackgroundColor: theme.colors.primaryColor,
+        tabStyle: {
+          height: 80,
+        },
+      }}
+      appearance={{}}
+    >
+      <Tab.Screen name="Início" component={Home} />
+      <Tab.Screen name="Pesquisar" component={Search} />
+      <Tab.Screen name="Módulos" component={ModuleList} />
+      <Tab.Screen name="Ajustes" component={SettingsPage} />
     </Tab.Navigator>
   );
 }
