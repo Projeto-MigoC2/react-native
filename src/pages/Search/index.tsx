@@ -14,6 +14,8 @@ import {
   SearchListItemTitle,
 } from "./styles";
 import Header from "../../components/global/Header";
+import { expressoes } from "../../utils/expressoes";
+import ExpressionKeyboard from "../../components/CustomKeyboard";
 
 export default function Search() {
   const [searchText, setSearchText] = useState("");
@@ -22,6 +24,7 @@ export default function Search() {
   async function fetchResults(text: string): Promise<Conteudo[]> {
     const formattedText = encodeURIComponent(text);
     const response = await api.get(`conteudos/pesquisa?texto=${formattedText}`);
+    console.log(expressoes[text]);
     return response.data;
   }
 
@@ -71,6 +74,7 @@ export default function Search() {
               ))}
             </SearchList>
           )}
+          <ExpressionKeyboard />
         </>
       </SearchContainer>
     </Container>
