@@ -28,9 +28,3 @@ export const ExpressionContainer = styled(View)`
   justify-content: center;
   margin: 10px;
 `;
-
-export const Expression = styled(MathJax)`
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-`;

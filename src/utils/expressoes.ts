@@ -1,18 +1,56 @@
 interface IExpressoes {
-    [chave: string]: string;
+    [chave: string]: IEstruturaExpressoes;
 }
 
+interface IEstruturaExpressoes {
+    latex: string;
+    simbolo: string;
+}
+
+const x = '□';
+const y = '‍□';
+
+
+
 export const expressoes: IExpressoes = {
-    raiz: '\\sqrt{ }',
-    fracao: '\\frac{3}{3}',
-    potencia: '3^3',
-    pi: '\\pi',
-    infinito: '\\infty',
-    somatorio: '\\sum',
-    integral: '\\int',
-    integralDefinida: '\\int_{}^{}',
-    integralDupla: '\\iint',
-    integralDuplaDefinida: '\\iint_{1}^{1}',
-    integralTripla: '\\iiint',
-    integralTriplaDefinida: '\\iiint_{1}^{1}',
+    raiz: {
+        latex: '\\sqrt{x}',
+        simbolo: '√',
+    },
+    fracao: {
+        latex: '\\frac{x}{y}',
+        simbolo: 'x/y',
+    },
+    potencia: {
+        latex: 'x^{y}',
+        simbolo: 'x^y',
+    },
+    pi: {
+        latex: '\\pi',
+        simbolo: 'π',
+    },
+
+    infinito: {
+        latex: '\\infty',
+        simbolo: '∞',
+    },
+
+    somatorio: {
+        latex: '\\sum_{x}^{y}',
+        simbolo: '∑',
+    },
+
+    integral: {
+        latex: '\\int_{x}^{y}',
+        simbolo: '∫',
+    },
+    integralDefinida: {
+        latex: '\\int_{x}^{y}',
+        simbolo: '∫',
+    },
+
+    multiplicacao: {
+        latex: 'x \\cdot y',
+        simbolo: 'x*y',
+    },
 }
